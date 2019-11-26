@@ -1,0 +1,34 @@
+db.customer.insert({cname:"mukesh",modelname:"samsung j6", amount:20000})
+
+db.customer.insert({cname:"abhijeet",modelname:"samsung j6",amount:20060})
+
+db.customer.insert({cname:"manasi",modelname:"iphone7+",
+amount:30060})
+
+db.customer.insert({cname:"manisha",modelname:"iphone7+",amount:30070})
+
+ db.customer.insert({cname:"dipak",modelname:"iphone7+",amount:30800})
+
+db.shopping.insert({brandname:"samsung",rate:6,model:[{mname:"s40",ram:"3GB",rom:"32GB",rate:4},{mname:"j6",ram:"4GB",rom:"32GB",rate:7},{mname:"j7",ram:"6GB",rom:"64GB",rate:6}]})
+
+db.shopping.insert({brandname:"vivo",rate:8,model:[{mname:"Y55",ram:"3GB",rom:"32GB",rate:6},{mname:"Ys5",ram:"4GB", rom:"32GB",rate:4},{mname:"YYY",ram:"6GB",rom:"64GB",rate:6}]})
+
+
+
+a) >
+db.shopping.find({"model.ram":"3GB","model.rom":"32GB"})
+
+b) > 
+db.customer.find({modelname:"samsung j6"})
+
+c) > 
+
+db.shopping.aggregate([{"$sort":{"rate":1}}, {"$limit":1},{$group:{_id:"$brandname"}}])
+
+d) > 
+db.customer.find({modelname:"iphone7+"}).sort( { "cname": 1 } )
+
+
+
+
+db.shopping.aggregate([{$group:{_id:"$brandname"}}])
